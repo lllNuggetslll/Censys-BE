@@ -1,32 +1,29 @@
-var express = require("express");
-var path = require("path");
-var logger = require("morgan");
-var port = 3000;
-var indexRouter = require("./routes/index");
+import express from "express";
+import logger from "morgan";
+import { router } from "./routes/index.js";
+import http from "http";
+import cors from "cors";
 
-var http = require("http");
-
-var app = express();
+const port = 3000;
+const app = express();
 
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 
-app.use(express.static(path.join(__dirname, "public")));
-
-app.use("/*", indexRouter);
+app.use(router);
 
 app.set("port", port);
 
-var server = http.createServer(app);
+const server = http.createServer(app);
 
 server.listen(port);
 server.on("listening", onListening);
 
 function onListening() {
-  var addr = server.address();
-  var bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
+  const addr = server.address();
+  const bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
+
   console.log(bind);
 }
-
-module.exports = app;
