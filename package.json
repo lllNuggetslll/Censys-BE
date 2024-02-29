@@ -1,14 +1,18 @@
 {
   "name": "Censys-BE",
   "version": "0.0.0",
+  "type": "module",
   "private": true,
   "scripts": {
-    "start": "node ./app"
+    "start": "node ./app.js"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "debug": "~2.6.9",
     "express": "~4.16.1",
+    "keygenerator": "^1.0.4",
     "morgan": "~1.9.1",
+    "node": "20.11.1",
     "node-cache": "^5.1.2"
   }
 }
