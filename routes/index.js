@@ -1,9 +1,13 @@
-var express = require("express");
-var router = express.Router();
+import express from "express";
+import {
+  createToDo,
+  getAllToDos,
+  getSingleToDo,
+  deleteSingleToDo,
+} from "../controllers/index.js";
 
-/* GET home page. */
-router.get("/", function (req, res, next) {
-  console.log("getting");
-});
+export const router = express.Router();
 
-module.exports = router;
+router.route("/").get(getAllToDos).post(createToDo);
+
+router.route("/:key").get(getSingleToDo).delete(deleteSingleToDo);
