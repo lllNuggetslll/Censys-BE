@@ -7,17 +7,17 @@ Another ToDo App Server exposes restful endpoints that:
 - View all todos
 - Delete todos
 
-### To Run:
+## To Run:
 
-## 1. `npm install`
+### 1. `npm install`
 
 Installs packages
 
-## 2. `npm start`
+### 2. `npm start`
 
 Opens port on: `http://localhost:4000`
 
-### Routes:
+## Routes:
 
 On the initial screen you can view all your todos.
 
@@ -27,20 +27,20 @@ Route: /
 Method: GET
 Payload: [{ key: ID, title: string}]
 
-## Add a todo:
+### Add a todo:
 
 Route: /
 Method: POST
 Body: { title: string, description: string }
 Payload: { key: ID }
 
-## View single todo:
+### View single todo:
 
 Route: /:key
 Method: GET
 Payload: { key: ID, title: string, description: string }
 
-## To delete a todo:
+### To delete a todo:
 
 Route: /:key
 Method: DELETE
