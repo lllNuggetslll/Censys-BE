@@ -1,22 +1,27 @@
 import NodeCache from "node-cache";
-import keygen from "keygenerator";
 
 const myCache = new NodeCache();
 
 export const addToDo = ({ title, description }) => {
-  const key = keygen._();
+  const toDoExists = myCache.has(title);
 
-  myCache.set(key, {
+  if (toDoExists) {
+    throw new Error("Not Found");
+  }
+
+  myCache.set(title, {
     title,
     description,
   });
 
-  return key;
+  const toDo = myCache.get(title);
+
+  return toDo;
 };
 
 export const getToDo = ({ key }) => {
   const toDoExists = myCache.has(key);
-  console.log("getting todo");
+
   if (toDoExists) {
     const toDo = myCache.get(key);
 
